@@ -1,0 +1,33 @@
+*.swp
+.DS_Store
+.cache
+tmp/
+
+# maven build
+target/
+.mvn
+
+# gradle build
+.gradle
+build
+dependencies.lock
+**/dependencies.lock
+gradle/
+out
+gradle/wrapper/gradle-wrapper.jar
+
+# intellij files
+.idea
+.idea_modules/
+*.ipr
+*.iws
+*.iml
+
+# vscode/eclipse files
+.classpath
+.project
+.settings
+bin/
+
+# Project-specific directories
+/generated-tables/
