@@ -1,7 +1,6 @@
-/*
- * Copyright (C) 2017-2019 Dremio Corporation. This file is confidential and private property.
- */
-package com.dremio.tools.iceberg;
+package com.dremio.tools.iceberg.util;
+
+import static java.util.Objects.requireNonNull;
 
 import java.io.File;
 import java.util.Arrays;
@@ -24,14 +23,15 @@ public class TableTestBase {
   }
 
   protected TestTables.TestTable create(Schema schema, PartitionSpec spec) {
+    requireNonNull(tableDir, "tableDir not set in the test");
     return TestTables.create(tableDir, "test", schema, spec);
   }
 
-  Set<String> pathSet(DataFile... files) {
+  protected Set<String> pathSet(DataFile... files) {
     return Sets.newHashSet(Iterables.transform(Arrays.asList(files), file -> file.path().toString()));
   }
 
-  Set<String> pathSet(Iterable<DataFile> files) {
+  protected Set<String> pathSet(Iterable<DataFile> files) {
     return Sets.newHashSet(Iterables.transform(files, file -> file.path().toString()));
   }
 }

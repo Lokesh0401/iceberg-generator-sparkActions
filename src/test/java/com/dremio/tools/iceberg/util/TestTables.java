@@ -1,7 +1,4 @@
-/*
- * Copyright (C) 2017-2019 Dremio Corporation. This file is confidential and private property.
- */
-package com.dremio.tools.iceberg;
+package com.dremio.tools.iceberg.util;
 
 import static org.apache.iceberg.TableMetadata.newTableMetadata;
 
