@@ -41,7 +41,7 @@ public class TableWithLargeDataFileCountGenerator extends TableTestBase {
 
   @Test
   public void createTableWithLargeDataFileAndSnapshotCount() {
-    int fileCount = 1000_000;
+    int fileCount = 100;
     System.out.println("Appending " + fileCount + " files to the table...");
     for (int i = 0; i < fileCount; i++) {
       DataFile dataFile = buildDataFileWithMetricsForStringColumn(100 + i);

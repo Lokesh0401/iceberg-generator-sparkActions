@@ -40,7 +40,7 @@ public class TableWithLargeManifestFileSizeGenerator extends TableTestBase {
 
   @Test
   public void createTableWithLargeManifestFile() {
-    int fileCount = 1_000_000;
+    int fileCount = 100;
     System.out.println("Appending " + fileCount + " files to the table...");
 
     Transaction transaction = table.newTransaction();
