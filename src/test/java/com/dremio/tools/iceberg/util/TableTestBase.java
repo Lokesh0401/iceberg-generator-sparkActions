@@ -6,25 +6,24 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Set;
 
+import org.apache.hadoop.conf.Configuration;
 import org.apache.iceberg.DataFile;
 import org.apache.iceberg.PartitionSpec;
 import org.apache.iceberg.Schema;
+import org.apache.iceberg.SortOrder;
+import org.apache.iceberg.Table;
+import org.apache.iceberg.hadoop.HadoopTables;
+import org.apache.iceberg.relocated.com.google.common.collect.ImmutableMap;
 import org.apache.iceberg.relocated.com.google.common.collect.Iterables;
 import org.apache.iceberg.relocated.com.google.common.collect.Sets;
-import org.junit.After;
 
 public class TableTestBase {
   protected File tableDir = null;
-  protected TestTables.TestTable table = null;
+  protected Table table = null;
 
-  @After
-  public void cleanupTables() {
-    TestTables.clearTables();
-  }
-
-  protected TestTables.TestTable create(Schema schema, PartitionSpec spec) {
+  protected Table create(Schema schema, PartitionSpec spec) {
     requireNonNull(tableDir, "tableDir not set in the test");
-    return TestTables.create(tableDir, "test", schema, spec);
+    return new HadoopTables(new Configuration()).create(schema, spec, SortOrder.unsorted(), ImmutableMap.of(), tableDir.toString());
   }
 
   protected Set<String> pathSet(DataFile... files) {
