@@ -15,6 +15,7 @@ import org.apache.iceberg.Metrics;
 import org.apache.iceberg.PartitionSpec;
 import org.apache.iceberg.Schema;
 import org.apache.iceberg.relocated.com.google.common.collect.ImmutableMap;
+import org.apache.iceberg.relocated.com.google.common.collect.Sets;
 import org.apache.iceberg.types.Types;
 import org.junit.Before;
 import org.junit.Test;
@@ -52,7 +53,7 @@ public class TableWithLargeDataFileCountGenerator extends TableTestBase {
 
     Iterable<DataFile> files = FindFiles.in(table).collect();
     assertEquals(fileCount, pathSet(files).size());
-    assertEquals(fileCount, table.currentSnapshot().snapshotId());
+    assertEquals(fileCount, Sets.newHashSet(table.snapshots()).size());
   }
 
   private DataFile buildDataFileWithMetricsForStringColumn(long records) {

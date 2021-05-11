@@ -14,6 +14,7 @@ import org.apache.iceberg.FindFiles;
 import org.apache.iceberg.PartitionSpec;
 import org.apache.iceberg.Schema;
 import org.apache.iceberg.Transaction;
+import org.apache.iceberg.relocated.com.google.common.collect.Sets;
 import org.apache.iceberg.types.Types;
 import org.junit.Before;
 import org.junit.Test;
@@ -54,7 +55,7 @@ public class TableWithLargeManifestFileSizeGenerator extends TableTestBase {
     transaction.commitTransaction();
     Iterable<DataFile> files = FindFiles.in(table).collect();
     assertEquals(fileCount, pathSet(files).size());
-    assertEquals(1L, table.currentSnapshot().snapshotId());
+    assertEquals(1, Sets.newHashSet(table.snapshots()).size());
   }
 
   private DataFile buildDataFileWithMetricsForStringColumn(long records) {
