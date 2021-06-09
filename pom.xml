@@ -51,6 +51,22 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>org.apache.iceberg</groupId>
+      <artifactId>iceberg-spark3</artifactId>
+      <version>${iceberg-core.version}</version>
+    </dependency>
+    <dependency>
+     <groupId>org.apache.iceberg</groupId>
+     <artifactId>iceberg-spark3-runtime</artifactId>
+     <version>${iceberg-core.version}</version>
+    </dependency>
+    <dependency>
+     <groupId>org.apache.spark</groupId>
+     <artifactId>spark-sql_2.12</artifactId>
+     <version>3.0.1</version>
+     <scope>provided</scope>
+    </dependency>
+    <dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-common</artifactId>
       <version>${hadoop-common.version}</version>
