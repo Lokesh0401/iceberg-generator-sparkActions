@@ -100,8 +100,8 @@ public class RewriteManifestFilesDemo extends TableTestBase {
                 .commit();
         Actions act = Actions.forTable(table);
         RewriteManifestsActionResult result = act.rewriteManifests()
-            .rewriteIf(manifestFile -> true)
-            .execute();
+                .rewriteIf(manifestFile -> true)
+                .execute();
         table.refresh();
         manifests = table.currentSnapshot().allManifests();
         Assert.assertEquals(1,manifests.size());
