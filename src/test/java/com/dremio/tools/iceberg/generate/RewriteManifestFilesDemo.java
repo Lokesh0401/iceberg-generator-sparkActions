@@ -85,13 +85,11 @@ public class RewriteManifestFilesDemo extends TableTestBase {
                 .appendFile(FILE_0)
                 .appendFile(FILE_1)
                 .commit();
-        table.refresh();
 
         table.newAppend()
                 .appendFile(FILE_2)
                 .appendFile(FILE_3)
                 .commit();
-        table.refresh();
 
         List<ManifestFile> manifests = table.currentSnapshot().allManifests();
         Assert.assertEquals(2,manifests.size());
